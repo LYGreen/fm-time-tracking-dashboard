@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](#)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/time-tracking-dashboard-using-html-css-and-javascript-TfK0NXrZUQ)
 - Live Site URL: [Add live site URL here](#)
 
 ## My process
