@@ -1,0 +1,376 @@
+:root {
+    --purple-600: hsl(246, 80%, 60%);
+
+    --orange-300: hsl(15, 100%, 70%);
+    --blue-300: hsl(195, 74%, 62%);
+    --pink-400: hsl(348, 100%, 68%);
+    --green-400: hsl(145, 58%, 55%);
+    --purple-700: hsl(264, 64%, 52%);
+    --yellow-300: hsl(43, 84%, 65%);
+
+    --navy-950: hsl(226, 43%, 10%);
+    --navy-900: hsl(235, 46%, 20%);
+    --purple-500: hsl(235, 45%, 61%);
+    --navy-200: hsl(236, 100%, 87%);
+}
+
+.rubik-300 {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.rubik-400 {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-500 {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    background-color: var(--navy-950);
+}
+
+main {
+    flex: 1;
+}
+
+#profile {
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: var(--navy-900);
+    margin: 1rem 0;
+
+    #info {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 2rem;
+        background-color: var(--purple-600);
+        border-radius: 0 0 1rem 1rem;
+
+        .avatar {
+            aspect-ratio: 1 / 1;
+            width: 4rem;
+            height: 4rem;
+            background-image: url("./images/image-jeremy.png");
+            background-size: 100% 100%;
+            border-color: white;
+            border-style: solid;
+            border-radius: 100%;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .report {
+                color: var(--navy-200);
+            }
+
+            .name {
+                color: white;
+                font-size: 1.5rem;
+            }
+        }
+
+
+    }
+
+    #buttons {
+        display: flex;
+        flex-direction: row;
+
+        .btn {
+            background: none;
+            border-width: 0;
+            margin: 0;
+            padding: 1rem;
+            cursor: pointer;
+            color: var(--purple-500);
+            font-size: 1rem;
+            flex: 1;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: var(--purple-600);
+            }
+        }
+    }
+}
+
+#cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        z-index: 0;
+        padding-top: 2.5rem;
+
+        & > img {
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translate(-1rem, -1rem);
+            z-index: -1;
+        }
+
+        .info {
+            flex: 1;
+            display: grid;
+            
+            grid-template-columns: 1fr 1fr;
+            background-color: var(--navy-900);
+            padding: 1.5rem;
+            border-radius: 1rem 1rem 0 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: hsl(236, 44%, 33%);
+            }
+
+            .title {
+                color: var(--navy-200);
+                align-self: center;
+            }
+
+            .more {
+                background-size: 100% 100%;
+                background-image: url('./images/icon-ellipsis.svg');
+                background-repeat: no-repeat;
+                justify-self: end;
+                align-self: center;
+                width: 22px;
+                height: 5px;
+
+                color: var(--purple-500);
+                line-height: 100%;
+                font-size: 1.5rem;
+                transform: translate(0, -50%);
+            }
+
+            .current {
+                display: none;
+                color: var(--navy-200);
+                font-size: 2rem;
+            }
+
+            .previous {
+                display: none;
+                color: var(--purple-500);
+                align-self: center;
+                justify-self: end;
+            }
+
+
+        }
+    }
+}
+
+main[data-timeframe='daily'] {
+    #profile #buttons #btn-daily {
+        color: snow;
+    }
+
+    #cards .info .daily {
+        display: block;
+    }
+}
+
+main[data-timeframe='weekly'] {
+    #profile #buttons #btn-weekly {
+        color: snow;
+    }
+
+    #cards .info .weekly {
+        display: block;
+    }
+}
+
+main[data-timeframe='monthly'] {
+    #profile #buttons #btn-monthly {
+        color: snow;
+    }
+
+    #cards .info .monthly {
+        display: block;
+    }
+}
+
+.work {
+    background-color: var(--orange-300);
+}
+
+.play {
+    background-color: var(--blue-300);
+}
+
+.study {
+    background-color: var(--pink-400);
+}
+
+.exercise {
+    background-color: var(--green-400);
+}
+
+.social {
+    background-color: var(--purple-700);
+}
+
+.self-care {
+    background-color: var(--yellow-300);
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 480px) {
+    #profile {
+        #info {
+            .avatar {
+                width: 4.2rem;
+                height: 4.2rem;
+            }
+
+            .text {
+                .report {
+                    font-size: 1.2rem;
+                }
+
+                .name {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+
+        #buttons {
+            .btn {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    #cards {
+        .card {
+            .info {
+                .title {
+                    font-size: 1.2rem;
+                }
+
+                .current {
+                    font-size: 2.2rem;
+                }
+
+                .previous {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+
+    main {
+        padding: 5rem;
+    }
+
+}
+
+
+@media (min-width: 1024px) {
+    main {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        padding: 5rem 7rem;
+    }
+
+    #profile {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+
+        #info {
+            flex-direction: column;
+            flex: 1;
+
+            .avatar {
+                width: calc(3.5rem + 1vw);
+                height: calc(3.5rem + 1vw);
+            }
+            
+            .text {
+                .report {
+                    font-size: calc(0.8rem + 1vw);
+                }
+
+                .name {
+                    font-size: calc(2rem + 1vw);
+                }
+            }
+        }
+
+        #buttons {
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 2rem;
+
+            .btn {
+                font-size: calc(0.5rem + 1vw);
+            }
+        }
+    }
+
+    #cards {
+        flex: 3;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        .card {
+            .info {
+
+
+                .title {
+                    font-size: calc(0.5rem + 1vw);
+                    margin-bottom: 1rem;
+                }
+
+                .current {
+                    grid-row: 2 / 3;
+                    font-size: calc(2.5rem + 1vw);
+                }
+                
+                .previous {
+                    grid-row: 3 / 4;
+                    font-size: calc(0.1rem + 1vw);
+                    justify-self: self-start;
+                }
+            }
+        }
+    }
+}
