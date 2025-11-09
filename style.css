@@ -138,7 +138,7 @@ main {
             flex: 1;
             display: grid;
             
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
             background-color: var(--navy-900);
             padding: 1.5rem;
             border-radius: 1rem 1rem 0 0;
@@ -303,11 +303,21 @@ main[data-timeframe='monthly'] {
 
 @media (min-width: 1024px) {
     main {
-        display: flex;
-        flex-direction: row;
-        gap: 1.5rem;
-        padding: 5rem 7rem;
+        position: relative;
+
+        .container {
+            position: absolute;
+            width: calc(50rem + 15%);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+        }
     }
+
+    
 
     #profile {
         flex: 1;
@@ -320,17 +330,17 @@ main[data-timeframe='monthly'] {
             flex: 1;
 
             .avatar {
-                width: calc(3.5rem + 1vw);
-                height: calc(3.5rem + 1vw);
+                width: calc(3.5rem + 0.7vw);
+                height: calc(3.5rem + 0.7vw);
             }
             
             .text {
                 .report {
-                    font-size: calc(0.8rem + 1vw);
+                    font-size: calc(0.8rem + 0.7vw);
                 }
 
                 .name {
-                    font-size: calc(2rem + 1vw);
+                    font-size: calc(2rem + 0.7vw);
                 }
             }
         }
@@ -341,7 +351,7 @@ main[data-timeframe='monthly'] {
             padding-left: 2rem;
 
             .btn {
-                font-size: calc(0.5rem + 1vw);
+                font-size: calc(0.5rem + 0.7vw);
             }
         }
     }
@@ -356,18 +366,18 @@ main[data-timeframe='monthly'] {
 
 
                 .title {
-                    font-size: calc(0.5rem + 1vw);
+                    font-size: calc(0.5rem + 0.7vw);
                     margin-bottom: 1rem;
                 }
 
                 .current {
                     grid-row: 2 / 3;
-                    font-size: calc(2.5rem + 1vw);
+                    font-size: calc(2.5rem + 0.7vw);
                 }
                 
                 .previous {
                     grid-row: 3 / 4;
-                    font-size: calc(0.1rem + 1vw);
+                    font-size: calc(0.3rem + 0.7vw);
                     justify-self: self-start;
                 }
             }
