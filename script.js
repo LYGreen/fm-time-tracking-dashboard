@@ -75,7 +75,7 @@ const appendCard = function(cardObj) {
         const currentVal = cardObj.timeframes[mode].current;
         const current = document.createElement('span');
         current.classList.add('current', mode, 'rubik-300');
-        current.textContent = `${currentVal}hr${currentVal == 1 ? '' : 's'}`;
+        current.textContent = `${currentVal}hr${currentVal <= 1 ? '' : 's'}`;
         
         const dict = {
             daily: 'Yesterday',
@@ -85,7 +85,7 @@ const appendCard = function(cardObj) {
         const previousVal = cardObj.timeframes[mode].previous;
         const previous = document.createElement('span');
         previous.classList.add('previous', mode, 'rubik-400');
-        previous.textContent = `${dict[mode]} - ${previousVal}hr${previousVal == 1 ? '' : 's'}`;
+        previous.textContent = `${dict[mode]} - ${previousVal}hr${previousVal <= 1 ? '' : 's'}`;
 
         console.log(current, previous);
         return {current, previous};
