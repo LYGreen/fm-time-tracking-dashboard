@@ -66,30 +66,37 @@ const appendCard = function(cardObj) {
     const more = document.createElement('div');
     more.className = 'more';
 
-    const currentDaily = document.createElement('span');
-    currentDaily.classList.add('current', 'daily', 'rubik-300');
-    currentDaily.textContent = `${cardObj.timeframes.daily.current}hrs`;
-    
-    const previousDaily = document.createElement('span');
-    previousDaily.classList.add('previous', 'daily', 'rubik-400');
-    previousDaily.textContent = `Previous - ${cardObj.timeframes.daily.previous}hrs`;
-    
-    const currentWeekly = document.createElement('span');
-    currentWeekly.classList.add('current', 'weekly', 'rubik-300');
-    currentWeekly.textContent = `${cardObj.timeframes.weekly.current}hrs`;
-    
-    const previousWeekly = document.createElement('span');
-    previousWeekly.classList.add('previous', 'weekly', 'rubik-400');
-    previousWeekly.textContent = `Previous - ${cardObj.timeframes.weekly.previous}hrs`;
-    
-    const currentMonthly = document.createElement('span');
-    currentMonthly.classList.add('current', 'monthly', 'rubik-300');
-    currentMonthly.textContent = `${cardObj.timeframes.monthly.current}hrs`;
-    
-    const previousMonthly = document.createElement('span');
-    previousMonthly.classList.add('previous', 'monthly', 'rubik-400');
-    previousMonthly.textContent = `Previous - ${cardObj.timeframes.monthly.previous}hrs`;
+    /**
+     * 
+     * @param {'daily' | 'weekly' | 'monthly'} mode 
+     * @returns The current and the previous.
+     */
+    const createTimeframe = function (mode) {
+        const currentVal = cardObj.timeframes[mode].current;
+        const current = document.createElement('span');
+        current.classList.add('current', mode, 'rubik-300');
+        current.textContent = `${currentVal}hr${currentVal == 1 ? '' : 's'}`;
+        
+        const dict = {
+            daily: 'Yesterday',
+            weekly: 'Last Week',
+            monthly: 'Last Month',
+        }
+        const previousVal = cardObj.timeframes[mode].previous;
+        const previous = document.createElement('span');
+        previous.classList.add('previous', mode, 'rubik-400');
+        previous.textContent = `${dict[mode]} - ${previousVal}hr${previousVal == 1 ? '' : 's'}`;
 
+        console.log(current, previous);
+        return {current, previous};
+    };
+    
+    const {current: currentDaily, previous: previousDaily} = createTimeframe('daily');
+    const {current: currentWeekly, previous: previousWeekly} = createTimeframe('weekly');
+    const {current: currentMonthly, previous: previousMonthly} = createTimeframe('monthly');
+
+    console.log(currentDaily, previousDaily);
+    
     info.appendChild(title);
     info.appendChild(more);
     info.appendChild(currentDaily);
